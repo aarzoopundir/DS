@@ -68,21 +68,24 @@ public class LinkedList {
     	}
     	temp.next=null;
     }
-    public void delete(int key){
-    	Node temp=head, prev=null;
-    	if(temp!=null && temp.data==key)
-    	{
-    		head=temp.next;
-    		return;
-    	}
-    	while(temp !=null && temp.data!=key)
-    	{
-    		prev=temp;
-    		temp=temp.next;
-    	}
-    	if(temp==null)
-    	return;
-    	prev.next=temp.next;
+    Node deleteNode(Node head, int position) {
+        Node curr=head;
+        Node prev=head;
+        Node last=null;
+        if (position == 0) {
+            head = curr.next; 
+            return head;
+        }
+        while(position>0){
+            prev=curr;
+            curr=curr.next;
+            position--;
+        }
+        last=curr.next;
+       
+        prev.next=last;
+        return head;
+
 
     }
     void print() {
